@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  artifactoryservice:
+    image: releases-docker.jfrog.io/jfrog/artifactory-pro
+    container_name: artifactory
+    ports:
+      - 8081:8081
+      - 8082:8082
+    networks:
+      - artifactorynetwork
+    volumes:
+      - artifactoryvolume:/var/opt/jfrog/artifactory
+
+volumes:
+  artifactoryvolume:
+
+networks:
+  artifactorynetwork:
+    name: artifactorynetwork
+    driver: bridge
